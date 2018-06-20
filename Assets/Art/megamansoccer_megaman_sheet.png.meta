@@ -1,0 +1,818 @@
+fileFormatVersion: 2
+guid: e9f89e4ca25f5d842978567d6f1717c9
+timeCreated: 1528901897
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: megamansoccer_megaman_sheet_0
+    21300002: megamansoccer_megaman_sheet_1
+    21300004: megamansoccer_megaman_sheet_2
+    21300006: megamansoccer_megaman_sheet_3
+    21300008: megamansoccer_megaman_sheet_4
+    21300010: megamansoccer_megaman_sheet_5
+    21300012: megamansoccer_megaman_sheet_6
+    21300014: megamansoccer_megaman_sheet_7
+    21300016: megamansoccer_megaman_sheet_8
+    21300018: megamansoccer_megaman_sheet_9
+    21300020: megamansoccer_megaman_sheet_10
+    21300022: megamansoccer_megaman_sheet_11
+    21300024: megamansoccer_megaman_sheet_12
+    21300026: megamansoccer_megaman_sheet_13
+    21300028: megamansoccer_megaman_sheet_14
+    21300030: megamansoccer_megaman_sheet_15
+    21300032: megamansoccer_megaman_sheet_16
+    21300034: megamansoccer_megaman_sheet_17
+    21300036: megamansoccer_megaman_sheet_18
+    21300038: megamansoccer_megaman_sheet_19
+    21300040: megamansoccer_megaman_sheet_20
+    21300042: megamansoccer_megaman_sheet_21
+    21300044: megamansoccer_megaman_sheet_22
+    21300046: megamansoccer_megaman_sheet_23
+    21300048: megamansoccer_megaman_sheet_24
+    21300050: megamansoccer_megaman_sheet_25
+    21300052: megamansoccer_megaman_sheet_26
+    21300054: megamansoccer_megaman_sheet_27
+    21300056: megamansoccer_megaman_sheet_28
+    21300058: megamansoccer_megaman_sheet_29
+    21300060: megamansoccer_megaman_sheet_30
+    21300062: megamansoccer_megaman_sheet_31
+    21300064: megamansoccer_megaman_sheet_32
+    21300066: megamansoccer_megaman_sheet_33
+    21300068: megamansoccer_megaman_sheet_34
+    21300070: megamansoccer_megaman_sheet_35
+    21300072: megamansoccer_megaman_sheet_36
+    21300074: megamansoccer_megaman_sheet_37
+    21300076: megamansoccer_megaman_sheet_38
+    21300078: megamansoccer_megaman_sheet_39
+    21300080: megamansoccer_megaman_sheet_40
+    21300082: megamansoccer_megaman_sheet_41
+    21300084: megamansoccer_megaman_sheet_42
+    21300086: megamansoccer_megaman_sheet_43
+    21300088: megamansoccer_megaman_sheet_44
+    21300090: megamansoccer_megaman_sheet_45
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 165
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 169
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 164
+        width: 21
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 162
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 161
+        width: 25
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 162
+        width: 21
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 119
+        width: 15
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 119
+        width: 15
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 119
+        width: 22
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 119
+        width: 22
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_10
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 121
+        width: 25
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_11
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 121
+        width: 25
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_12
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 121
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_13
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 121
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_14
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 123
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_15
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 123
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 81
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_17
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 81
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_18
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 81
+        width: 25
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_19
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 80
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_20
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 80
+        width: 18
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_21
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 80
+        width: 18
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_22
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 80
+        width: 26
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_23
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 80
+        width: 25
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_24
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 82
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_25
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 82
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_26
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 40
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_27
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 40
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_28
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 41
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_29
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 41
+        width: 19
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_30
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 41
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_31
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 41
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_32
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 42
+        width: 22
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_33
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 41
+        width: 18
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_34
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 40
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_35
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 40
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_36
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_37
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 1
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_38
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1
+        width: 25
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_39
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 0
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_40
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 4
+        width: 32
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_41
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 4
+        width: 32
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_42
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 1
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_43
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 4
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_44
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 7
+        width: 38
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megamansoccer_megaman_sheet_45
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 7
+        width: 38
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
