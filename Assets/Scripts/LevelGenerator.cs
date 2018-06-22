@@ -13,9 +13,9 @@ public class LevelGenerator : MonoBehaviour
     private const float PIXEL_PER_UNIT = 100;
     private const float TILE_SIZE = 64;
 
-    public GameObject[] m_FloorPrefabList;
-    public GameObject[] m_WallPrefabList;
-    public GameObject[] m_DestructiblePrefabList;
+    public GameObject m_FloorPrefab;
+    public GameObject m_WallPrefab;
+    public GameObject m_DestructiblePrefab;
 
     public LevelData m_LevelData;
 
@@ -23,7 +23,9 @@ public class LevelGenerator : MonoBehaviour
 
     [HideInInspector]
     public PlayerMovement m_Player;
-        
+
+    private List<List<GameObject>> m_TileReference = new List<List<GameObject>>();
+
     private void Awake()
     {
         m_Instance = this;
@@ -40,36 +42,46 @@ public class LevelGenerator : MonoBehaviour
         
         for (int i = 0; i < m_LevelData.GetWidth(); ++i)
         {
+            m_TileReference.Add(new List<GameObject>());
             for (int j = 0; j < m_LevelData.GetHeight(); ++j)
             {
                 offset = new Vector2(TILE_SIZE * i / PIXEL_PER_UNIT, -TILE_SIZE * j / PIXEL_PER_UNIT);
                 spawnPos = initialPos + offset;
                 
-                CreateTile(m_LevelData.Tiles[i][j], spawnPos);
+                CreateTile(m_LevelData.Tiles[i][j], spawnPos, i);
             }
         }
+
+        for (int i = 0; i < m_LevelData.Tiles.Length; i++)
+        {
+            m_LevelData.Tiles[i].SetCopy();
+        }
+
     }
 
-    private void CreateTile(ETileType aType, Vector2 aPos)
+    private void CreateTile(ETileType aType, Vector2 aPos, int aCol)
     {
         switch (aType)
         {
             case ETileType.Floor:
             {
-                GameObject floor = Instantiate(m_FloorPrefabList[Random.Range(0, m_FloorPrefabList.Length)]);
+                GameObject floor = Instantiate(m_FloorPrefab);
                 floor.transform.position = aPos;
+                m_TileReference[aCol].Add(floor);
                 break;
             }
             case ETileType.Wall:
             {
-                GameObject wall = Instantiate(m_WallPrefabList[Random.Range(0, m_WallPrefabList.Length)]);
+                GameObject wall = Instantiate(m_WallPrefab);
                 wall.transform.position = aPos;
+                m_TileReference[aCol].Add(wall);
                 break;
             }
             case ETileType.Destructible:
             {
-                GameObject destructible = Instantiate(m_DestructiblePrefabList[Random.Range(0, m_DestructiblePrefabList.Length)]);
+                GameObject destructible = Instantiate(m_DestructiblePrefab);
                 destructible.transform.position = aPos;
+                m_TileReference[aCol].Add(destructible);
                 break;
             }
         }
@@ -82,7 +94,20 @@ public class LevelGenerator : MonoBehaviour
             return (ETileType)m_LevelData.Tiles[aCol] [aRow];
         }
         return ETileType.Wall;
+    }
 
+    public void BreakTheWall(int aRow, int aCol)
+    {
+        ETileType tileType = (ETileType)m_LevelData.Tiles[aCol][aRow];
+
+        if (tileType == ETileType.Destructible)
+        {
+            m_LevelData.Tiles[aCol][aRow] = ETileType.Floor;
+            m_TileReference[aCol][aRow].GetComponentInChildren<SpriteRenderer>().sprite =
+                m_FloorPrefab.GetComponentInChildren<SpriteRenderer>().sprite;
+            m_TileReference[aCol][aRow].GetComponentInChildren<SpriteRenderer>().sortingOrder =
+                m_FloorPrefab.GetComponentInChildren<SpriteRenderer>().sortingOrder;
+        }
     }
 
     public Vector3 GetPositionAt(int aRow, int aCol)
@@ -95,5 +120,14 @@ public class LevelGenerator : MonoBehaviour
         Vector2 pos = initialPos + offset;
 
         return pos;
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log("OnDestroy");
+        for (int i = 0; i < m_LevelData.Tiles.Length; i++)
+        {
+            m_LevelData.Tiles[i].ResetData();
+        }
     }
 }

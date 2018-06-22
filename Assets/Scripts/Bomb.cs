@@ -62,7 +62,16 @@ public class Bomb : MonoBehaviour
 				Explosion newExplosionScript = newExplosion.GetComponent<Explosion>();
 				newExplosionScript.Setup(top, m_CurrentCol);
 			}
-			else
+            else if (LevelGenerator.Instance.GetTileTypeAtPos(top, m_CurrentCol) == ETileType.Destructible && Up)
+            {
+                Debug.Log("Il y a une bombe à la position du destructible");
+                m_ExplosionPos = LevelGenerator.Instance.GetPositionAt(top, m_CurrentCol);
+                GameObject newExplosion = Instantiate(m_Explosion, m_ExplosionPos, Quaternion.identity);
+                Explosion newExplosionScript = newExplosion.GetComponent<Explosion>();
+                newExplosionScript.Setup(top, m_CurrentCol);
+                Up = false;
+            }
+            else
 			{
 				Up = false;
 			}
@@ -74,7 +83,16 @@ public class Bomb : MonoBehaviour
 				Explosion newExplosionScript = newExplosion.GetComponent<Explosion>();
 				newExplosionScript.Setup(down, m_CurrentCol);
 			}
-			else
+            else if (LevelGenerator.Instance.GetTileTypeAtPos(down, m_CurrentCol) == ETileType.Destructible && Down)
+            {
+                Debug.Log("Il y a une bombe à la position du destructible");
+                m_ExplosionPos = LevelGenerator.Instance.GetPositionAt(down, m_CurrentCol);
+                GameObject newExplosion = Instantiate(m_Explosion, m_ExplosionPos, Quaternion.identity);
+                Explosion newExplosionScript = newExplosion.GetComponent<Explosion>();
+                newExplosionScript.Setup(down, m_CurrentCol);
+                Down = false;
+            }
+            else
 			{
 				Down = false;
 			}

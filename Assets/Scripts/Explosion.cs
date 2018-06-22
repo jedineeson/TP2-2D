@@ -29,6 +29,10 @@ public class Explosion : MonoBehaviour
 		{
 			Destroy(LevelGenerator.Instance.m_Player.gameObject);
 		}
+        if(LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow, m_CurrentCol) == ETileType.Destructible)
+        {
+            LevelGenerator.Instance.BreakTheWall(m_CurrentRow, m_CurrentCol);
+        }
 	}
 
 	private IEnumerator SelfDestruct()
