@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
-{
+{    
     private static LevelGenerator m_Instance;
     public static LevelGenerator Instance
     {
@@ -20,9 +20,18 @@ public class LevelGenerator : MonoBehaviour
     public LevelData m_LevelData;
 
     public GameObject m_PlayerPrefab;
+    public GameObject m_WoodmanPrefab;
+    public GameObject m_CutmanPrefab;
+    public GameObject m_WillyPrefab;
 
     [HideInInspector]
     public PlayerMovement m_Player;
+    [HideInInspector]
+    public AI m_Woodman;
+    [HideInInspector]
+    public AI m_Cutman;
+    [HideInInspector]
+    public AI m_Willy;
 
     private List<List<GameObject>> m_TileReference = new List<List<GameObject>>();
 
@@ -34,12 +43,37 @@ public class LevelGenerator : MonoBehaviour
         float y = (Screen.height - TILE_SIZE) / PIXEL_PER_UNIT / 2.0f;
         Vector2 initialPos = new Vector2(x, y);
 
+        float xWoodman = (-Screen.width + (25*TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
+        float yWoodman = (Screen.height - (25 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
+        Vector2 initialPosWoodman = new Vector2(xWoodman, yWoodman);
+
+        float xCutman = (-Screen.width + TILE_SIZE) / PIXEL_PER_UNIT / 2.0f;
+        float yCutman = (Screen.height - (25 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
+        Vector2 initialPosCutman = new Vector2(xCutman, yCutman);
+
+        float xWilly = (-Screen.width + (25 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
+        float yWilly = (Screen.height - TILE_SIZE) / PIXEL_PER_UNIT / 2.0f;
+        Vector2 initialPosWilly = new Vector2(xWilly, yWilly);
+
         Vector2 offset = new Vector2(TILE_SIZE / PIXEL_PER_UNIT, -TILE_SIZE / PIXEL_PER_UNIT);
         Vector2 spawnPos = initialPos + offset;
+        Vector2 spawnPosWoodman = initialPosWoodman + offset;
+        Vector2 spawnPosCutman = initialPosCutman + offset;
+        Vector2 spawnPosWilly = initialPosWilly + offset;
+
 
         m_Player = Instantiate(m_PlayerPrefab, spawnPos, Quaternion.identity).GetComponent<PlayerMovement>();
         m_Player.Setup(1, 1);
-        
+
+        m_Woodman = Instantiate(m_WoodmanPrefab, spawnPosWoodman, Quaternion.identity).GetComponent<AI>();
+        m_Woodman.Setup(13, 13);
+
+        m_Cutman = Instantiate(m_CutmanPrefab, spawnPosCutman, Quaternion.identity).GetComponent<AI>();
+        m_Cutman.Setup(13, 1);
+
+        m_Willy = Instantiate(m_WillyPrefab, spawnPosWilly, Quaternion.identity).GetComponent<AI>();
+        m_Willy.Setup(1, 13);
+
         for (int i = 0; i < m_LevelData.GetWidth(); ++i)
         {
             m_TileReference.Add(new List<GameObject>());
@@ -56,7 +90,6 @@ public class LevelGenerator : MonoBehaviour
         {
             m_LevelData.Tiles[i].SetCopy();
         }
-
     }
 
     private void CreateTile(ETileType aType, Vector2 aPos, int aCol)

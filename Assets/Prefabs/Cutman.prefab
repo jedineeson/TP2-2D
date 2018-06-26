@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4217442612550604}
   - component: {fileID: 212123052892454070}
   - component: {fileID: 95038199145076874}
-  m_Layer: 8
+  - component: {fileID: 114557136196422218}
+  m_Layer: 9
   m_Name: Cutman
-  m_TagString: Untagged
+  m_TagString: Cutman
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,8 +36,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1997395781676660}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.1, y: 2.1, z: 2}
+  m_LocalPosition: {x: 0.678, y: 0, z: 0}
+  m_LocalScale: {x: 1.6, y: 1.6, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -58,6 +59,22 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114557136196422218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1997395781676660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: befbed9c59b057e4ab9e4bbe9c862085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Visual: {fileID: 212123052892454070}
+  m_BombPrefab: {fileID: 1598506470144128, guid: fd54520346c4f874f8126df70c10f535,
+    type: 2}
+  m_Speed: 2
+  m_PlayerAnimator: {fileID: 95038199145076874}
 --- !u!212 &212123052892454070
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -89,8 +106,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1101730731
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: a23f1079c431cd444b0b58ee4b9acd48, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

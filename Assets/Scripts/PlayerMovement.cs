@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public BombMap m_BombMap;
+
     public SpriteRenderer m_Visual;
     public GameObject m_BombPrefab;
     
     public float m_Speed;
     public Animator m_PlayerAnimator;
 
+    private GameObject[] m_Enemys = new GameObject[3];
 
     private int m_CurrentRow;
     public int currentRow
@@ -38,16 +41,23 @@ public class PlayerMovement : MonoBehaviour
         m_CurrentCol = aCol;
     }
 
-	// Update is called once per frame
-	private void Update()
+    private void Start()
+    {
+        m_Enemys[0] = GameObject.FindGameObjectWithTag("Willy");
+        m_Enemys[1] = GameObject.FindGameObjectWithTag("Woodman");
+        m_Enemys[2] = GameObject.FindGameObjectWithTag("Cutman");
+    }
+
+    // Update is called once per frame
+    private void Update()
     {
         if (!m_IsMoving)
         {
             float askMoveHorizontal = Input.GetAxisRaw("Horizontal");
             float askMoveVertical = Input.GetAxisRaw("Vertical");
 
-            Debug.Log(askMoveHorizontal);
-            Debug.Log(askMoveVertical);
+            //Debug.Log(askMoveHorizontal);
+            //Debug.Log(askMoveVertical);
 
             if(Input.GetKeyDown(KeyCode.Q))
             {
@@ -56,12 +66,16 @@ public class PlayerMovement : MonoBehaviour
                 GameObject bombe = GameObject.Instantiate(m_BombPrefab, m_BombPos, m_BombPrefab.transform.rotation);
                 Bomb bomba = bombe.GetComponent<Bomb>();
                 bomba.Setup(m_CurrentRow, m_CurrentCol);
+                for(int i = 0; i < m_Enemys.Length; i++)
+                {
+                    m_Enemys[i].GetComponent<AI>().SetBombList(m_CurrentRow, m_CurrentCol, true);
+                    StartCoroutine(SetBoolFalse(m_CurrentRow, m_CurrentCol));
+                }
             }   
 
             if (askMoveHorizontal == 0f && askMoveVertical == 0f)
             {
                  //m_Visual.flipX = false;
-                 m_PlayerAnimator.SetBool("WalkLeft", false);
                  m_PlayerAnimator.SetBool("WalkRight", false);
                  m_PlayerAnimator.SetBool("WalkDown", false);
                  m_PlayerAnimator.SetBool("WalkUp", false);
@@ -93,39 +107,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 m_Visual.flipX = false;
             }
-
-            /*else if (askMoveHorizontal != -1f)
-            {  
-                //m_Visual.flipX = true;
-                m_PlayerAnimator.SetBool("WalkRight", false);
-                m_PlayerAnimator.SetBool("WalkDown", false);
-                m_PlayerAnimator.SetBool("WalkUp", false);        
-                m_PlayerAnimator.SetBool("WalkLeft", true);
-            }
-            else if (askMoveHorizontal == 1f)
-            {
-                //m_Visual.flipX = false;
-                m_PlayerAnimator.SetBool("WalkLeft", false);
-                m_PlayerAnimator.SetBool("WalkDown", false);
-                m_PlayerAnimator.SetBool("WalkUp", false);
-                m_PlayerAnimator.SetBool("WalkRight", true);
-            }
-            else if (askMoveVertical == -1f)
-            {
-                m_PlayerAnimator.SetBool("WalkLeft", false);
-                m_PlayerAnimator.SetBool("WalkRight", false);
-                m_PlayerAnimator.SetBool("WalkUp", false);
-                m_PlayerAnimator.SetBool("WalkDown", true);
-            }
-            else if (askMoveVertical == 1f)
-            {
-                //m_Visual.flipX = false;
-                m_PlayerAnimator.SetBool("WalkLeft", false);
-                m_PlayerAnimator.SetBool("WalkRight", false);
-                m_PlayerAnimator.SetBool("WalkDown", false);
-                m_PlayerAnimator.SetBool("WalkUp", true);
-            }*/
-
 
             if (askMoveHorizontal != 0 &&
             LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow, m_CurrentCol + (int)askMoveHorizontal) == ETileType.Floor)
@@ -164,6 +145,15 @@ public class PlayerMovement : MonoBehaviour
             {
                 m_IsMoving = false;
             }
+        }
+    }
+
+    private IEnumerator SetBoolFalse(int aRow, int aCol)
+    {
+        yield return new WaitForSeconds(3f);
+        for (int i = 0; i < m_Enemys.Length; i++)
+        {
+            m_Enemys[i].GetComponent<AI>().SetBombList(aRow, aCol, false);
         }
     }
 }

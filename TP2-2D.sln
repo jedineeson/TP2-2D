@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
+# Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP2-2D", "TP2-2D.csproj", "{37B87D90-D01B-EF0C-957D-7A5910D06B64}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP2-2D.Editor", "TP2-2D.Editor.csproj", "{D9F43AA5-D84F-FE4F-7C18-22CFDEA4CBB3}"
