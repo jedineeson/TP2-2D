@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public BombMap m_BombMap;
+    public PlayerData m_Data;
+    public float m_HP;
+    private float m_Speed;
+
+    private BombMap m_BombMap;
 
     public SpriteRenderer m_Visual;
     public GameObject m_BombPrefab;
     
-    public float m_Speed;
+    //public float m_Speed;
     public Animator m_PlayerAnimator;
 
     private GameObject[] m_Enemys = new GameObject[3];
@@ -41,6 +45,11 @@ public class PlayerMovement : MonoBehaviour
         m_CurrentCol = aCol;
     }
 
+    private void Awake()
+    {
+        m_HP = m_Data.HP;
+        m_Speed = m_Data.Speed;
+    }
     private void Start()
     {
         m_Enemys[0] = GameObject.FindGameObjectWithTag("Willy");

@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: c76a7ada7eb9ea04a8c0c3c4096b6d10
+timeCreated: 1530112078
+licenseType: Pro
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Kings Feast
+  fontNames:
+  - Kings Feast
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -52,7 +52,7 @@ public class Scrolling : MonoBehaviour
                 //déplace les background
                 m_LayerGroup[i].m_Backgrounds[j].transform.Translate(-m_LayerGroup[i].m_LayerSpeed * Time.deltaTime, 0f, 0f);
                 //Si un background dépasse la limite
-                if (m_LayerGroup[i].m_Backgrounds[j].transform.position.x < m_ScreenWidth)
+                if (m_LayerGroup[i].m_Backgrounds[j].transform.position.x <= m_ScreenWidth)
                 {
                     //Place le vector(position du background) hors-limite à la position du previous background + la taille de l'écran
                     m_ScrollingDir.x = m_LayerGroup[i].m_PreviousBackground.transform.position.x - m_ScreenWidth;

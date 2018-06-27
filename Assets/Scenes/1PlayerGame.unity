@@ -140,11 +140,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11490658a85d0894487094e594fa146a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FloorPrefab: {fileID: 1229007901058620, guid: c66a25456ddb83d4b8c61c6de9c70be2,
+  m_FloorPrefab: {fileID: 1479644690861844, guid: 5015074cc929e53448ddbdcc0f5eca9f,
     type: 2}
-  m_WallPrefab: {fileID: 1805760143662860, guid: d910e98bc9d7a284baec4b0db2c44960,
+  m_WallPrefab: {fileID: 1150519187934908, guid: 4fea7a901a0e74f48ac3ca45d4fbf609,
     type: 2}
-  m_DestructiblePrefab: {fileID: 1597816649316094, guid: 3b8f94cc9976d9345bee0fdf411869cc,
+  m_DestructiblePrefab: {fileID: 1913029172392940, guid: a1cbd08a1c93a4d48b45b7fb41459b7f,
     type: 2}
   m_LevelData: {fileID: 11400000, guid: 08f71569b5a63604cb5374835e858a5e, type: 2}
   m_PlayerPrefab: {fileID: 1551549994503402, guid: b7f9c493d53c27646968d94b0043edd3,

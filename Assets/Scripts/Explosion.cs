@@ -45,7 +45,16 @@ public class Explosion : MonoBehaviour
 	{
 		if(aOther.gameObject.layer == LayerMask.NameToLayer("Player"))
 		{
-			Destroy(aOther.gameObject);
+			PlayerMovement PlayerMove = aOther.gameObject.GetComponent<PlayerMovement>();
+			PlayerMove.m_HP -= 1;
+			Debug.Log("PLayer Life: " + PlayerMove.m_HP);
+		}
+		
+		if(aOther.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+		{
+			AI Enemy = aOther.gameObject.GetComponent<AI>();
+			Enemy.m_HP -= 1;
+			Debug.Log(aOther.gameObject.tag + ": " + Enemy.m_HP);
 		}
 	}
 }
