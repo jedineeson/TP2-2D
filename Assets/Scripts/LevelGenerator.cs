@@ -24,6 +24,9 @@ public class LevelGenerator : MonoBehaviour
     public GameObject m_CutmanPrefab;
     public GameObject m_WillyPrefab;
 
+    public GameObject m_powerUp1Prefab;
+    public GameObject m_powerUp2Prefab;
+
     [HideInInspector]
     public PlayerMovement m_Player;
     [HideInInspector]
@@ -39,40 +42,58 @@ public class LevelGenerator : MonoBehaviour
     {
         m_Instance = this;
 
+        Vector2 offset = new Vector2(TILE_SIZE / PIXEL_PER_UNIT, -TILE_SIZE / PIXEL_PER_UNIT);
+
         float x = (-Screen.width + TILE_SIZE) / PIXEL_PER_UNIT / 2.0f;
         float y = (Screen.height - TILE_SIZE) / PIXEL_PER_UNIT / 2.0f;
         Vector2 initialPos = new Vector2(x, y);
+        Vector2 spawnPos = initialPos + offset;
+        m_Player = Instantiate(m_PlayerPrefab, spawnPos, Quaternion.identity).GetComponent<PlayerMovement>();
+        m_Player.Setup(1, 1);
 
         float xWoodman = (-Screen.width + (25*TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
         float yWoodman = (Screen.height - (25 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
         Vector2 initialPosWoodman = new Vector2(xWoodman, yWoodman);
+        Vector2 spawnPosWoodman = initialPosWoodman + offset;
+        m_Woodman = Instantiate(m_WoodmanPrefab, spawnPosWoodman, Quaternion.identity).GetComponent<AI>();
+        m_Woodman.Setup(13, 13);
 
         float xCutman = (-Screen.width + TILE_SIZE) / PIXEL_PER_UNIT / 2.0f;
         float yCutman = (Screen.height - (25 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
         Vector2 initialPosCutman = new Vector2(xCutman, yCutman);
+        Vector2 spawnPosCutman = initialPosCutman + offset;
+        m_Cutman = Instantiate(m_CutmanPrefab, spawnPosCutman, Quaternion.identity).GetComponent<AI>();
+        m_Cutman.Setup(13, 1);
 
         float xWilly = (-Screen.width + (25 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
         float yWilly = (Screen.height - TILE_SIZE) / PIXEL_PER_UNIT / 2.0f;
         Vector2 initialPosWilly = new Vector2(xWilly, yWilly);
-
-        Vector2 offset = new Vector2(TILE_SIZE / PIXEL_PER_UNIT, -TILE_SIZE / PIXEL_PER_UNIT);
-        Vector2 spawnPos = initialPos + offset;
-        Vector2 spawnPosWoodman = initialPosWoodman + offset;
-        Vector2 spawnPosCutman = initialPosCutman + offset;
         Vector2 spawnPosWilly = initialPosWilly + offset;
-
-
-        m_Player = Instantiate(m_PlayerPrefab, spawnPos, Quaternion.identity).GetComponent<PlayerMovement>();
-        m_Player.Setup(1, 1);
-
-        m_Woodman = Instantiate(m_WoodmanPrefab, spawnPosWoodman, Quaternion.identity).GetComponent<AI>();
-        m_Woodman.Setup(13, 13);
-
-        m_Cutman = Instantiate(m_CutmanPrefab, spawnPosCutman, Quaternion.identity).GetComponent<AI>();
-        m_Cutman.Setup(13, 1);
-
         m_Willy = Instantiate(m_WillyPrefab, spawnPosWilly, Quaternion.identity).GetComponent<AI>();
         m_Willy.Setup(1, 13);
+        
+// TROP HARDCODER POWER UP EN COURS DE CONCEPTION
+        float xPowerUp1 = (-Screen.width + (13 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
+        float yPowerUp1 = (Screen.height - (5 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
+        Vector2 powerUp1InitialPos = new Vector2(xPowerUp1, yPowerUp1);
+        Vector2 powerUp1Pos = powerUp1InitialPos+ offset;
+        Instantiate(m_powerUp1Prefab, powerUp1Pos, Quaternion.identity);
+        xPowerUp1 = (-Screen.width + (13 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
+        yPowerUp1 = (Screen.height - (21 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
+        powerUp1InitialPos = new Vector2(xPowerUp1, yPowerUp1);
+        powerUp1Pos = powerUp1InitialPos+ offset;
+        Instantiate(m_powerUp1Prefab, powerUp1Pos, Quaternion.identity);
+        float xPowerUp2 = (-Screen.width + (5 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
+        float yPowerUp2 = (Screen.height - (13 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
+        Vector2 powerUp2InitialPos = new Vector2(xPowerUp2, yPowerUp2);
+        Vector2 powerUp2Pos = powerUp2InitialPos+ offset;
+        Instantiate(m_powerUp2Prefab, powerUp2Pos, Quaternion.identity);
+        xPowerUp2 = (-Screen.width + (21 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
+        yPowerUp2 = (Screen.height - (13 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
+        powerUp2InitialPos = new Vector2(xPowerUp2, yPowerUp2);
+        powerUp2Pos = powerUp2InitialPos+ offset;
+        Instantiate(m_powerUp2Prefab, powerUp2Pos, Quaternion.identity);
+
 
         for (int i = 0; i < m_LevelData.GetWidth(); ++i)
         {
