@@ -1,4 +1,4 @@
-﻿                               using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +17,9 @@ public class AI : MonoBehaviour
     public GameObject m_BombPrefab;
 
     public Animator m_PlayerAnimator;
+
+    private int m_DestinationRow;
+    private int m_DestinationCol;
 
     private int m_CurrentRow;
     public int currentRow
@@ -67,6 +70,14 @@ public class AI : MonoBehaviour
 
     private void Update()
     {
+        if(m_HP <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void FixedUpdate()
+    {
         if (m_IsMoving)
         {
             m_PercentageCompletion += Time.fixedDeltaTime * m_Speed;
@@ -76,13 +87,22 @@ public class AI : MonoBehaviour
 
             if (m_PercentageCompletion >= 1 && m_IsWalking)
             {
-                m_IsMoving = false;
                 StopCoroutine(PlayAgain());
                 StartCoroutine(PlayAgain());
                 m_IsWalking = false;
                 m_Visual.flipX = false;
+
+                ChangePosition(m_DestinationRow, m_DestinationCol);
+                m_PercentageCompletion = 0;
+                m_IsMoving = false;
             }
         }
+    }
+
+    private void ChangePosition(int row, int col)
+    {
+        m_CurrentRow = row;
+        m_CurrentCol = col;
     }
 
     private void Move()
@@ -98,7 +118,8 @@ public class AI : MonoBehaviour
                     m_PercentageCompletion = 0f;
                     m_InitialPos = transform.position;
                     m_WantedPos = LevelGenerator.Instance.GetPositionAt(m_CurrentRow - 1, m_CurrentCol);
-                    m_CurrentRow -= 1;
+                    m_DestinationRow = m_CurrentRow - 1;
+                    m_DestinationCol = m_CurrentCol;
                 }
                 break;
 
@@ -111,7 +132,8 @@ public class AI : MonoBehaviour
                     m_PercentageCompletion = 0f;
                     m_InitialPos = transform.position;
                     m_WantedPos = LevelGenerator.Instance.GetPositionAt(m_CurrentRow, m_CurrentCol + 1);
-                    m_CurrentCol += 1;
+                    m_DestinationCol = m_CurrentCol + 1;
+                    m_DestinationRow = m_CurrentRow;
                 }
                 break;
             case 2:
@@ -123,7 +145,8 @@ public class AI : MonoBehaviour
                     m_PercentageCompletion = 0f;
                     m_InitialPos = transform.position;
                     m_WantedPos = LevelGenerator.Instance.GetPositionAt(m_CurrentRow + 1, m_CurrentCol);
-                    m_CurrentRow += 1;
+                    m_DestinationRow = m_CurrentRow + 1;
+                    m_DestinationCol = m_CurrentCol;
                 }
                 break;
             case 3:
@@ -135,7 +158,8 @@ public class AI : MonoBehaviour
                     m_PercentageCompletion = 0f;
                     m_InitialPos = transform.position;
                     m_WantedPos = LevelGenerator.Instance.GetPositionAt(m_CurrentRow, m_CurrentCol - 1);
-                    m_CurrentCol -= 1;
+                    m_DestinationCol = m_CurrentCol - 1;
+                    m_DestinationRow = m_CurrentRow;
                 break;
             case 4:
                 m_PlayerAnimator.SetBool("WalkDown", false);
@@ -378,14 +402,13 @@ public class AI : MonoBehaviour
             {
                 if ((m_CurrentRow < 14 && m_BombList[m_CurrentRow + 1][m_CurrentCol] == true) && m_BombList[m_CurrentRow][m_CurrentCol] != true)
                 {
-                    Debug.Log("HERE");
                     m_MyState = 5;
                 }
                 else
                 {
                     do
                     {
-                        m_MyState = Random.Range(0, 5);
+                        m_MyState = 2;
                     }
                     while (m_MyState == 0 || m_MyState == 1 || m_MyState == 3);
                 }

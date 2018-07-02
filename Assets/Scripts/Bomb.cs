@@ -55,7 +55,8 @@ public class Bomb : MonoBehaviour
 
 			yield return new WaitForSeconds(m_DelayBetweenExplosion);
 			
-			if(LevelGenerator.Instance.GetTileTypeAtPos(top, m_CurrentCol) == ETileType.Floor && Up)
+			if(LevelGenerator.Instance.GetTileTypeAtPos(top, m_CurrentCol) == ETileType.Floor && Up
+                || LevelGenerator.Instance.GetTileTypeAtPos(top, m_CurrentCol) == ETileType.Trap && Up)
 			{
 				m_ExplosionPos = LevelGenerator.Instance.GetPositionAt(top, m_CurrentCol);
 				GameObject newExplosion = Instantiate(m_Explosion, m_ExplosionPos, Quaternion.identity);
@@ -75,7 +76,8 @@ public class Bomb : MonoBehaviour
 				Up = false;
 			}
 
-			if(LevelGenerator.Instance.GetTileTypeAtPos(down, m_CurrentCol) == ETileType.Floor && Down)
+			if(LevelGenerator.Instance.GetTileTypeAtPos(down, m_CurrentCol) == ETileType.Floor && Down
+                || LevelGenerator.Instance.GetTileTypeAtPos(down, m_CurrentCol) == ETileType.Trap && Down)
 			{
 				m_ExplosionPos = LevelGenerator.Instance.GetPositionAt(down, m_CurrentCol);
 				GameObject newExplosion = Instantiate(m_Explosion, m_ExplosionPos, Quaternion.identity);
@@ -95,7 +97,8 @@ public class Bomb : MonoBehaviour
 				Down = false;
 			}
 
-			if(LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow, left) == ETileType.Floor && Left)
+			if(LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow, left) == ETileType.Floor && Left
+                || LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow, left) == ETileType.Trap && Left)
 			{
 				m_ExplosionPos = LevelGenerator.Instance.GetPositionAt(m_CurrentRow, left);
 				GameObject newExplosion = Instantiate(m_Explosion, m_ExplosionPos, Quaternion.identity);
@@ -115,7 +118,8 @@ public class Bomb : MonoBehaviour
 				Left = false;
 			}
 
-			if(LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow, right) == ETileType.Floor && Right)
+			if(LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow, right) == ETileType.Floor && Right
+                || LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow, right) == ETileType.Trap && Right)
 			{
 				m_ExplosionPos = LevelGenerator.Instance.GetPositionAt(m_CurrentRow, right);
 				GameObject newExplosion = Instantiate(m_Explosion, m_ExplosionPos, Quaternion.identity);

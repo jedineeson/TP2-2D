@@ -16,6 +16,7 @@ public class LevelGenerator : MonoBehaviour
     public GameObject m_FloorPrefab;
     public GameObject m_WallPrefab;
     public GameObject m_DestructiblePrefab;
+    public GameObject m_TrapPrefab;
 
     public LevelData m_LevelData;
 
@@ -28,7 +29,7 @@ public class LevelGenerator : MonoBehaviour
     public GameObject m_powerUp2Prefab;
 
     [HideInInspector]
-    public PlayerMovement m_Player;
+    public PlayerController m_Player;
     [HideInInspector]
     public AI m_Woodman;
     [HideInInspector]
@@ -48,7 +49,7 @@ public class LevelGenerator : MonoBehaviour
         float y = (Screen.height - TILE_SIZE) / PIXEL_PER_UNIT / 2.0f;
         Vector2 initialPos = new Vector2(x, y);
         Vector2 spawnPos = initialPos + offset;
-        m_Player = Instantiate(m_PlayerPrefab, spawnPos, Quaternion.identity).GetComponent<PlayerMovement>();
+        m_Player = Instantiate(m_PlayerPrefab, spawnPos, Quaternion.identity).GetComponent<PlayerController>();
         m_Player.Setup(1, 1);
 
         float xWoodman = (-Screen.width + (25*TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
@@ -77,22 +78,30 @@ public class LevelGenerator : MonoBehaviour
         float yPowerUp1 = (Screen.height - (5 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
         Vector2 powerUp1InitialPos = new Vector2(xPowerUp1, yPowerUp1);
         Vector2 powerUp1Pos = powerUp1InitialPos+ offset;
-        Instantiate(m_powerUp1Prefab, powerUp1Pos, Quaternion.identity);
+        BombPowerUp powerUp; 
+        powerUp = Instantiate(m_powerUp1Prefab, powerUp1Pos, Quaternion.identity).GetComponent<BombPowerUp>();
+        powerUp.Setup(3, 7);
+
         xPowerUp1 = (-Screen.width + (13 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
         yPowerUp1 = (Screen.height - (21 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
         powerUp1InitialPos = new Vector2(xPowerUp1, yPowerUp1);
         powerUp1Pos = powerUp1InitialPos+ offset;
-        Instantiate(m_powerUp1Prefab, powerUp1Pos, Quaternion.identity);
+        powerUp = Instantiate(m_powerUp1Prefab, powerUp1Pos, Quaternion.identity).GetComponent<BombPowerUp>();
+        powerUp.Setup(11, 7);
+
+
         float xPowerUp2 = (-Screen.width + (5 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
         float yPowerUp2 = (Screen.height - (13 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
         Vector2 powerUp2InitialPos = new Vector2(xPowerUp2, yPowerUp2);
         Vector2 powerUp2Pos = powerUp2InitialPos+ offset;
-        Instantiate(m_powerUp2Prefab, powerUp2Pos, Quaternion.identity);
+        Heal powerUp2 = Instantiate(m_powerUp2Prefab, powerUp2Pos, Quaternion.identity).GetComponent<Heal>();
+        powerUp2.Setup(7, 3);
         xPowerUp2 = (-Screen.width + (21 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
         yPowerUp2 = (Screen.height - (13 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
         powerUp2InitialPos = new Vector2(xPowerUp2, yPowerUp2);
         powerUp2Pos = powerUp2InitialPos+ offset;
-        Instantiate(m_powerUp2Prefab, powerUp2Pos, Quaternion.identity);
+        powerUp2 = Instantiate(m_powerUp2Prefab, powerUp2Pos, Quaternion.identity).GetComponent<Heal>();
+        powerUp2.Setup(7, 11);
 
 
         for (int i = 0; i < m_LevelData.GetWidth(); ++i)
@@ -136,6 +145,13 @@ public class LevelGenerator : MonoBehaviour
                 GameObject destructible = Instantiate(m_DestructiblePrefab);
                 destructible.transform.position = aPos;
                 m_TileReference[aCol].Add(destructible);
+                break;
+            }
+            case ETileType.Trap:
+            {
+                GameObject trap = Instantiate(m_TrapPrefab);
+                trap.transform.position = aPos;
+                m_TileReference[aCol].Add(trap);
                 break;
             }
         }

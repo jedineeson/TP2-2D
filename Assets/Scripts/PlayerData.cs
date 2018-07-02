@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "new PlayerData", menuName = "ScriptablObjects/PlayerData")]
 public class PlayerData : ScriptableObject
 {
-    [SerializeField] private float m_HP;
+    [SerializeField] private int m_HP;
     [SerializeField] private float m_Speed;
     [SerializeField] private string m_Id;
 

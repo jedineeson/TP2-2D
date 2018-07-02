@@ -10,7 +10,8 @@ public class LevelDataEditor : Editor
     // Tile textures
     private Texture m_WallTexture;
     private Texture m_FloorTexture;
-    private Texture m_BrickDestructibleTexture;
+    private Texture m_DestructibleTexture;
+    public Texture m_TrapTexture;
 
     private LevelData m_Target;
     private Rect m_Rect;
@@ -27,7 +28,8 @@ public class LevelDataEditor : Editor
         // Get the texture from the special Unity Folder
         m_WallTexture = (Texture)EditorGUIUtility.Load("Bricks.jpg");
         m_FloorTexture = (Texture)EditorGUIUtility.Load("Floor.jpg");
-        m_BrickDestructibleTexture = (Texture)EditorGUIUtility.Load("Destructible.jpg");
+        m_DestructibleTexture = (Texture)EditorGUIUtility.Load("Destructible.jpg");
+        m_TrapTexture = (Texture)EditorGUIUtility.Load("Trap.png");
 
         InitSize();
     }
@@ -135,7 +137,12 @@ public class LevelDataEditor : Editor
                 }
             case ETileType.Destructible:
                 {
-                    image = m_BrickDestructibleTexture;
+                    image = m_DestructibleTexture;
+                    break;
+                }
+            case ETileType.Trap:
+                {
+                    image = m_TrapTexture;
                     break;
                 }
             default:

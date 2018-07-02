@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4166875844246180}
   - component: {fileID: 212927594977520804}
   - component: {fileID: 95621443190416036}
-  - component: {fileID: 65805723758160988}
   - component: {fileID: 114742301024087038}
+  - component: {fileID: 61283522539282742}
   m_Layer: 9
   m_Name: Woodman
   m_TagString: Woodman
@@ -43,18 +43,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65805723758160988
-BoxCollider:
+--- !u!61 &61283522539282742
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1858965015350116}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.29, y: 0.28}
+    newSize: {x: 0.29, y: 0.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.29, y: 0.28, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.29, y: 0.28}
+  m_EdgeRadius: 0
 --- !u!95 &95621443190416036
 Animator:
   serializedVersion: 3
@@ -83,8 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befbed9c59b057e4ab9e4bbe9c862085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Data: {fileID: 11400000, guid: 124e0381f4c361d4492e3916f9e9164f, type: 2}
-  m_HP: 0
+  m_Data: {fileID: 11400000, guid: 2a61ba30cc381164b9c8a7b38fba74c3, type: 2}
+  m_HP: 2
   m_Visual: {fileID: 212927594977520804}
   m_BombPrefab: {fileID: 1598506470144128, guid: fd54520346c4f874f8126df70c10f535,
     type: 2}
@@ -121,7 +134,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1101730731
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: ac61e24cae66421479ac9cd0e88c5111, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

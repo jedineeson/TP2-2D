@@ -6,7 +6,6 @@ public class Explosion : MonoBehaviour
 {
 	//[SerializeField]
 	//private LevelGenerator m_LevelGenerator;
-
 	private int m_CurrentRow;
     private int m_CurrentCol;
 	public void Setup(int aRow, int aCol)
@@ -20,16 +19,36 @@ public class Explosion : MonoBehaviour
 
 	private void Start () 
 	{
-		StartCoroutine(SelfDestruct());
+        StartCoroutine(SelfDestruct());
 	}
 
 	private void Update()
 	{
 		if(m_CurrentRow == LevelGenerator.Instance.m_Player.currentRow && m_CurrentCol == LevelGenerator.Instance.m_Player.currentCol)
 		{
-			Destroy(LevelGenerator.Instance.m_Player.gameObject);
-		}
-        if(LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow, m_CurrentCol) == ETileType.Destructible)
+			Destroy(gameObject);
+            LevelGenerator.Instance.m_Player.m_HP -= 1;
+            Debug.Log("PLayer Life: " + LevelGenerator.Instance.m_Player.m_HP);
+        }
+        if (m_CurrentRow == LevelGenerator.Instance.m_Willy.currentRow && m_CurrentCol == LevelGenerator.Instance.m_Willy.currentCol)
+        {
+            Destroy(gameObject);
+            LevelGenerator.Instance.m_Willy.m_HP -= 1;
+            Debug.Log("Willy Life: " + LevelGenerator.Instance.m_Willy.m_HP);
+        }
+        if (m_CurrentRow == LevelGenerator.Instance.m_Woodman.currentRow && m_CurrentCol == LevelGenerator.Instance.m_Woodman.currentCol)
+        {
+            Destroy(gameObject);
+            LevelGenerator.Instance.m_Woodman.m_HP -= 1;
+            Debug.Log("Woodman Life: " + LevelGenerator.Instance.m_Woodman.m_HP);
+        }
+        if (m_CurrentRow == LevelGenerator.Instance.m_Cutman.currentRow && m_CurrentCol == LevelGenerator.Instance.m_Cutman.currentCol)
+        {
+            Destroy(gameObject);
+            LevelGenerator.Instance.m_Cutman.m_HP -= 1;
+            Debug.Log("Cutman Life: " + LevelGenerator.Instance.m_Cutman.m_HP);
+        }
+        if (LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow, m_CurrentCol) == ETileType.Destructible)
         {
             LevelGenerator.Instance.BreakTheWall(m_CurrentRow, m_CurrentCol);
         }
@@ -39,22 +58,5 @@ public class Explosion : MonoBehaviour
 	{
 		yield return new WaitForSeconds(m_DelayBeforeDestruction); 
 		Destroy(this.gameObject);
-	}
-
-	private void OnTriggerEnter2D(Collider2D aOther)
-	{
-		if(aOther.gameObject.layer == LayerMask.NameToLayer("Player"))
-		{
-			PlayerMovement PlayerMove = aOther.gameObject.GetComponent<PlayerMovement>();
-			PlayerMove.m_HP -= 1;
-			Debug.Log("PLayer Life: " + PlayerMove.m_HP);
-		}
-		
-		if(aOther.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-		{
-			AI Enemy = aOther.gameObject.GetComponent<AI>();
-			Enemy.m_HP -= 1;
-			Debug.Log(aOther.gameObject.tag + ": " + Enemy.m_HP);
-		}
 	}
 }
