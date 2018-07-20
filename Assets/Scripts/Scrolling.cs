@@ -41,6 +41,8 @@ public class Scrolling : MonoBehaviour
         {
             m_LayerGroup[i].m_PreviousBackground = m_LayerGroup[i].m_Backgrounds[m_LayerGroup[i].m_Backgrounds.Length - 1];
         }
+
+        AudioManager.Instance.PlayMusic("MusicMenu");
     }
 
     private void Update()

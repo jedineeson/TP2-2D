@@ -37,8 +37,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1551549994503402}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 480, y: 480, z: 0}
   m_LocalScale: {x: 1.7, y: 1.7, z: 1.7}
   m_Children: []
   m_Father: {fileID: 0}
@@ -118,7 +118,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Data: {fileID: 11400000, guid: 124e0381f4c361d4492e3916f9e9164f, type: 2}
-  m_HP: 3
   GotSuperBomb: 0
   m_Visual: {fileID: 212703381054649756}
   m_BombPrefab: {fileID: 1598506470144128, guid: fd54520346c4f874f8126df70c10f535,
@@ -126,6 +125,14 @@ MonoBehaviour:
   m_SuperBombPrefab: {fileID: 1598506470144128, guid: 43af2bab7f0a2814fb585299d7d59cfc,
     type: 2}
   m_PlayerAnimator: {fileID: 95881048700164894}
+  m_Camera: {fileID: 0}
+  m_CameraInitialPos: {x: 0, y: 0}
+  m_CameraShakePos: {x: 0, y: 0}
+  m_HP: 3
+  m_Speed: 0
+  m_Explosion: {fileID: 1328168931237474, guid: 20dc38c724a35d848aeacb7fd8b41f98,
+    type: 2}
+  m_TrapPos: {x: 0, y: 0}
 --- !u!212 &212703381054649756
 SpriteRenderer:
   m_ObjectHideFlags: 1

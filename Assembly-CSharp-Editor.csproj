@@ -53,7 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Editor\LevelDataEditor.cs" />
  <Reference Include="Facebook.Unity.Settings">
- <HintPath>D:/Users/1810027/Desktop/TP2-2D/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
+ <HintPath>D:/Users/1810027/Desktop/À CONSERVER PRÉCIEUSEMENT/Gagnon-Vézina Jimmy/BOMBERMAN ALMOST OVER/TP2-2D/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>
  <Reference Include="Vuforia.UnityExtensions.Editor">
  <HintPath>C:/Program Files/Unity2017.4/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Editor/Vuforia.UnityExtensions.Editor.dll</HintPath>
@@ -137,10 +137,10 @@
  <HintPath>C:/Program Files/Unity2017.4/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="TextMeshPro-2017.3-Editor">
- <HintPath>D:/Users/1810027/Desktop/TP2-2D/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-Editor.dll</HintPath>
+ <HintPath>D:/Users/1810027/Desktop/À CONSERVER PRÉCIEUSEMENT/Gagnon-Vézina Jimmy/BOMBERMAN ALMOST OVER/TP2-2D/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-Editor.dll</HintPath>
  </Reference>
  <Reference Include="TextMeshPro-2017.3-Runtime">
- <HintPath>D:/Users/1810027/Desktop/TP2-2D/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-Runtime.dll</HintPath>
+ <HintPath>D:/Users/1810027/Desktop/À CONSERVER PRÉCIEUSEMENT/Gagnon-Vézina Jimmy/BOMBERMAN ALMOST OVER/TP2-2D/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.4/UnityEngine.Advertisements.dll</HintPath>

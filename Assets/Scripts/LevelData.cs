@@ -5,7 +5,6 @@ public class LevelData : ScriptableObject
 {
     [SerializeField] private TileColumn[] m_Tiles;
     
-
     public TileColumn[] Tiles
     {
         get 

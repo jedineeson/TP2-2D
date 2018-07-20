@@ -10,23 +10,19 @@ public class LevelGenerator : MonoBehaviour
         get { return m_Instance; }
     }
 
-    private const float PIXEL_PER_UNIT = 100;
-    private const float TILE_SIZE = 64;
+    public LevelData m_LevelData;
 
     public GameObject m_FloorPrefab;
     public GameObject m_WallPrefab;
     public GameObject m_DestructiblePrefab;
     public GameObject m_TrapPrefab;
-
-    public LevelData m_LevelData;
-
     public GameObject m_PlayerPrefab;
     public GameObject m_WoodmanPrefab;
     public GameObject m_CutmanPrefab;
     public GameObject m_WillyPrefab;
-
     public GameObject m_powerUp1Prefab;
     public GameObject m_powerUp2Prefab;
+    public GameObject m_SpeedPowerUp;
 
     [HideInInspector]
     public PlayerController m_Player;
@@ -36,6 +32,9 @@ public class LevelGenerator : MonoBehaviour
     public AI m_Cutman;
     [HideInInspector]
     public AI m_Willy;
+
+    private const float PIXEL_PER_UNIT = 100;
+    private const float TILE_SIZE = 64;
 
     private List<List<GameObject>> m_TileReference = new List<List<GameObject>>();
 
@@ -94,14 +93,15 @@ public class LevelGenerator : MonoBehaviour
         float yPowerUp2 = (Screen.height - (13 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
         Vector2 powerUp2InitialPos = new Vector2(xPowerUp2, yPowerUp2);
         Vector2 powerUp2Pos = powerUp2InitialPos+ offset;
-        Heal powerUp2 = Instantiate(m_powerUp2Prefab, powerUp2Pos, Quaternion.identity).GetComponent<Heal>();
+        SpeedPowerUp powerUp2 = Instantiate(m_SpeedPowerUp, powerUp2Pos, Quaternion.identity).GetComponent<SpeedPowerUp>();
         powerUp2.Setup(7, 3);
+
         xPowerUp2 = (-Screen.width + (21 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
         yPowerUp2 = (Screen.height - (13 * TILE_SIZE)) / PIXEL_PER_UNIT / 2.0f;
         powerUp2InitialPos = new Vector2(xPowerUp2, yPowerUp2);
         powerUp2Pos = powerUp2InitialPos+ offset;
-        powerUp2 = Instantiate(m_powerUp2Prefab, powerUp2Pos, Quaternion.identity).GetComponent<Heal>();
-        powerUp2.Setup(7, 11);
+        Heal powerUp3 = Instantiate(m_powerUp2Prefab, powerUp2Pos, Quaternion.identity).GetComponent<Heal>();
+        powerUp3.Setup(7, 11);
 
 
         for (int i = 0; i < m_LevelData.GetWidth(); ++i)
@@ -154,6 +154,18 @@ public class LevelGenerator : MonoBehaviour
                 m_TileReference[aCol].Add(trap);
                 break;
             }
+        }
+    }
+
+    public void PauseGame()
+    {
+        if(Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
+        else if(Time.timeScale == 1)
+        {
+            Time.timeScale = 0;
         }
     }
 

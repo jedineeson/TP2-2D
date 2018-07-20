@@ -29,7 +29,7 @@ public class BombMap : MonoBehaviour
         {
             for (int j = 0; j < m_GridSize; ++j)
             {
-                if(m_BombList[i][j] == true)
+                if (m_BombList[i][j] == true)
                 {
                     Debug.Log("i: " + i + " j: " + j + m_BombList[i][j]);
                 }
@@ -40,27 +40,27 @@ public class BombMap : MonoBehaviour
     public void SetBombList(int aRow, int aCol, bool aBool)
     {
         m_BombList[aRow][aCol] = aBool;
-        if(aRow>1)
+        if (aRow > 1)
         {
-            m_BombList[aRow-1][aCol] = aBool;
+            m_BombList[aRow - 1][aCol] = aBool;
             if (aRow > 2)
             {
-                m_BombList[aRow-2][aCol] = aBool;
+                m_BombList[aRow - 2][aCol] = aBool;
                 if (aRow > 3)
                 {
-                    m_BombList[aRow-3][aCol] = aBool;
+                    m_BombList[aRow - 3][aCol] = aBool;
                 }
             }
         }
         if (aRow < 14)
         {
-            m_BombList[aRow+1][aCol] = aBool;
+            m_BombList[aRow + 1][aCol] = aBool;
             if (aRow < 13)
             {
-                m_BombList[aRow+2][aCol] = aBool;
+                m_BombList[aRow + 2][aCol] = aBool;
                 if (aRow < 12)
                 {
-                    m_BombList[aRow+3][aCol] = aBool;
+                    m_BombList[aRow + 3][aCol] = aBool;
                 }
             }
         }

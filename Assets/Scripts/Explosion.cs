@@ -2,31 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Explosion : MonoBehaviour 
+public class Explosion : MonoBehaviour
 {
-	//[SerializeField]
-	//private LevelGenerator m_LevelGenerator;
-	private int m_CurrentRow;
+    [SerializeField]
+    private float m_DelayBeforeDestruction = 0.4f;
+    private int m_CurrentRow;
     private int m_CurrentCol;
-	public void Setup(int aRow, int aCol)
+
+    public void Setup(int aRow, int aCol)
     {
         m_CurrentRow = aRow;
         m_CurrentCol = aCol;
     }
 
-	[SerializeField]
-	private float m_DelayBeforeDestruction = 0.4f;
-
-	private void Start () 
-	{
+    private void Start()
+    {
         StartCoroutine(SelfDestruct());
-	}
+    }
 
-	private void Update()
-	{
-		if(m_CurrentRow == LevelGenerator.Instance.m_Player.currentRow && m_CurrentCol == LevelGenerator.Instance.m_Player.currentCol)
-		{
-			Destroy(gameObject);
+    private void Update()
+    {
+
+        if (m_CurrentRow == LevelGenerator.Instance.m_Player.currentRow && m_CurrentCol == LevelGenerator.Instance.m_Player.currentCol)
+        {
+            Destroy(gameObject);
             LevelGenerator.Instance.m_Player.m_HP -= 1;
             Debug.Log("PLayer Life: " + LevelGenerator.Instance.m_Player.m_HP);
         }
@@ -52,11 +51,11 @@ public class Explosion : MonoBehaviour
         {
             LevelGenerator.Instance.BreakTheWall(m_CurrentRow, m_CurrentCol);
         }
-	}
+    }
 
-	private IEnumerator SelfDestruct()
-	{
-		yield return new WaitForSeconds(m_DelayBeforeDestruction); 
-		Destroy(this.gameObject);
-	}
+    private IEnumerator SelfDestruct()
+    {
+        yield return new WaitForSeconds(m_DelayBeforeDestruction);
+        Destroy(this.gameObject);
+    }
 }

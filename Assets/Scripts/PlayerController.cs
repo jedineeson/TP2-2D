@@ -1,51 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    public int m_HP;
+    public float m_Speed;
     public PlayerData m_Data;
-
-    //en fair un getter de m_GotSuperBomb(qui n'existe pas encore (parle au script heal))
-    public bool GotSuperBomb;
-
-    private BombMap m_BombMap;
-
+    public Animator m_PlayerAnimator;
     public SpriteRenderer m_Visual;
     public GameObject m_BombPrefab;
     public GameObject m_SuperBombPrefab;
-
-    //public float m_Speed;
-    public Animator m_PlayerAnimator;
-
-    private GameObject[] m_Enemys = new GameObject[3];
-
+    public GameObject m_Explosion;
+    public Vector2 m_TrapPos;
+    
+    public bool GotSuperBomb = false;
+    private bool m_IsMoving = false;
+    private bool m_CanDropBomb = true;
+    private int m_CurrentRow;
+    private int m_CurrentCol;
     private int m_DestinationRow;
     private int m_DestinationCol;
-
-    public float m_HP;
-    private float m_Speed;
-
-    private int m_CurrentRow;
-    public int currentRow
-    {
-		get{return m_CurrentRow;}
-	}	
-    
-    private int m_CurrentCol;
-    public int currentCol
-    {
-		get{return m_CurrentCol;}
-	}	
-
-    private bool m_IsMoving = false;
-
+    private BombMap m_BombMap;
+    private GameObject[] m_Enemys = new GameObject[3];
     private Vector2 m_InitialPos;
     private Vector2 m_WantedPos;
     private Vector2 m_BombPos;
-    
-
+    private float m_TrapTimer = 2f;
     private float m_PercentageCompletion;
+    private bool m_IsAlive = true;
+
+    public int currentRow
+    {
+        get { return m_CurrentRow; }
+    }
+
+    public int currentCol
+    {
+        get { return m_CurrentCol; }
+    }
 
     public void Setup(int aRow, int aCol)
     {
@@ -55,32 +49,58 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        m_IsAlive = true;
         m_HP = m_Data.HP;
         m_Speed = m_Data.Speed;
+        m_TrapPos = LevelGenerator.Instance.GetPositionAt(7, 7);
     }
+
     private void Start()
     {
         m_Enemys[0] = GameObject.FindGameObjectWithTag("Willy");
         m_Enemys[1] = GameObject.FindGameObjectWithTag("Woodman");
         m_Enemys[2] = GameObject.FindGameObjectWithTag("Cutman");
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayMusic("MusicGame");
+        }
     }
 
     private void Update()
     {
-        if (m_HP <= 0)
+        m_TrapTimer -= Time.deltaTime;
+        
+        Debug.Log(m_IsAlive);
+        
+        if (m_TrapTimer <= 0)
         {
-            Destroy(gameObject);
+            Explosion trapExplosion = Instantiate(m_Explosion, m_TrapPos, Quaternion.identity).GetComponent<Explosion>();
+            trapExplosion.Setup(7, 7);
+            m_TrapTimer = 2f;
         }
-      
+
+        if (m_HP <= 0 && m_IsAlive)
+        {
+            AudioManager.Instance.StopMusic();
+            LevelManager.Instance.ChangeLevel("ResultLost");
+            m_IsAlive = false;
+        }
+
+        if (m_Enemys[0] == null && m_Enemys[1] == null && m_Enemys[2] == null && m_IsAlive)
+        {
+            AudioManager.Instance.StopMusic();
+            LevelManager.Instance.ChangeLevel("ResultWin");
+            m_IsAlive = false;
+        }
 
         if (!m_IsMoving)
         {
             float askMoveHorizontal = Input.GetAxisRaw("Horizontal");
             float askMoveVertical = Input.GetAxisRaw("Vertical");
 
-            if(Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (GotSuperBomb)
+                if (GotSuperBomb && Time.timeScale != 0)
                 {
                     m_BombPos = LevelGenerator.Instance.GetPositionAt(m_CurrentRow, m_CurrentCol);
                     GameObject bombe = GameObject.Instantiate(m_SuperBombPrefab, m_BombPos, m_BombPrefab.transform.rotation);
@@ -88,40 +108,45 @@ public class PlayerController : MonoBehaviour
                     bomba.Setup(m_CurrentRow, m_CurrentCol);
                     GotSuperBomb = false;
                 }
-                else
+                else if (m_CanDropBomb && Time.timeScale != 0)
                 {
                     m_BombPos = LevelGenerator.Instance.GetPositionAt(m_CurrentRow, m_CurrentCol);
                     GameObject bombe = GameObject.Instantiate(m_BombPrefab, m_BombPos, m_BombPrefab.transform.rotation);
                     Bomb bomba = bombe.GetComponent<Bomb>();
                     bomba.Setup(m_CurrentRow, m_CurrentCol);
+                    StartCoroutine(DropBombAgain());
                     for (int i = 0; i < m_Enemys.Length; i++)
                     {
-                        m_Enemys[i].GetComponent<AI>().SetBombList(m_CurrentRow, m_CurrentCol, true);
-                        StartCoroutine(SetBoolFalse(m_CurrentRow, m_CurrentCol));
-
+                        if (m_Enemys[i] != null)
+                        {
+                            m_Enemys[i].GetComponent<AI>().SetBombList(m_CurrentRow, m_CurrentCol, true);
+                            StartCoroutine(SetBoolFalse(m_CurrentRow, m_CurrentCol));
+                        }
                     }
+                    m_CanDropBomb = false;
+
                 }
-            }   
+            }
 
             if (askMoveHorizontal == 0f && askMoveVertical == 0f)
             {
-                 m_PlayerAnimator.SetBool("WalkRight", false);
-                 m_PlayerAnimator.SetBool("WalkDown", false);
-                 m_PlayerAnimator.SetBool("WalkUp", false);
+                m_PlayerAnimator.SetBool("WalkRight", false);
+                m_PlayerAnimator.SetBool("WalkDown", false);
+                m_PlayerAnimator.SetBool("WalkUp", false);
             }
-            else if(askMoveHorizontal != 0f)
+            else if (askMoveHorizontal != 0f)
             {
-                 m_PlayerAnimator.SetBool("WalkRight", true);
-                 m_PlayerAnimator.SetBool("WalkDown", false);
-                 m_PlayerAnimator.SetBool("WalkUp", false);
+                m_PlayerAnimator.SetBool("WalkRight", true);
+                m_PlayerAnimator.SetBool("WalkDown", false);
+                m_PlayerAnimator.SetBool("WalkUp", false);
             }
-            else if(askMoveVertical == 1)
+            else if (askMoveVertical == 1)
             {
                 m_PlayerAnimator.SetBool("WalkUp", true);
                 m_PlayerAnimator.SetBool("WalkRight", false);
                 m_PlayerAnimator.SetBool("WalkDown", false);
             }
-            else if(askMoveVertical == -1)
+            else if (askMoveVertical == -1)
             {
                 m_PlayerAnimator.SetBool("WalkDown", true);
                 m_PlayerAnimator.SetBool("WalkUp", false);
@@ -142,36 +167,31 @@ public class PlayerController : MonoBehaviour
             || LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow, m_CurrentCol + (int)askMoveHorizontal) == ETileType.Trap))
             {
                 m_IsMoving = true;
-                //m_PercentageCompletion = 0f;
-                
+
                 m_InitialPos = transform.position;
                 m_WantedPos = LevelGenerator.Instance.GetPositionAt(m_CurrentRow, m_CurrentCol + (int)askMoveHorizontal);
 
-                //m_CurrentCol += (int)askMoveHorizontal;
                 m_DestinationCol = m_CurrentCol + (int)askMoveHorizontal;
                 m_DestinationRow = m_CurrentRow;
-                //IsMoving(m_CurrentRow, m_CurrentCol + (int)askMoveHorizontal);
             }
             else if (askMoveVertical != 0 &&
             (LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow - (int)askMoveVertical, m_CurrentCol) == ETileType.Floor
             || LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow - (int)askMoveVertical, m_CurrentCol) == ETileType.Trap))
             {
                 m_IsMoving = true;
-                //m_PercentageCompletion = 0f;
-                
+
                 m_InitialPos = transform.position;
                 m_WantedPos = LevelGenerator.Instance.GetPositionAt(m_CurrentRow - (int)askMoveVertical, m_CurrentCol);
 
-                //m_CurrentRow -= (int)askMoveVertical;
                 m_DestinationRow = m_CurrentRow - (int)askMoveVertical;
                 m_DestinationCol = m_CurrentCol;
-                //IsMoving(m_CurrentRow - (int)askMoveVertical, m_CurrentCol);
             }
         }
     }
 
     private void FixedUpdate()
     {
+
         if (m_IsMoving)
         {
             m_PercentageCompletion += Time.fixedDeltaTime * m_Speed;
@@ -186,14 +206,31 @@ public class PlayerController : MonoBehaviour
                 m_IsMoving = false;
             }
         }
-
-        //ChangePosition(m_DestinationRow, m_DestinationCol);
     }
+
 
     private void ChangePosition(int row, int col)
     {
-            m_CurrentRow = row;
-            m_CurrentCol = col;
+        m_CurrentRow = row;
+        m_CurrentCol = col;
+    }
+
+    public void SpeedPowerUp()
+    {
+        m_Speed *= 3;
+        StartCoroutine(SpeedPowerUpTimer());
+    }
+
+    private IEnumerator DropBombAgain()
+    {
+        yield return new WaitForSeconds(3f);
+        m_CanDropBomb = true;
+    }
+
+    private IEnumerator SpeedPowerUpTimer()
+    {
+        yield return new WaitForSeconds(3f);
+        m_Speed /= 3;
     }
 
     private IEnumerator SetBoolFalse(int aRow, int aCol)
@@ -201,7 +238,10 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(3f);
         for (int i = 0; i < m_Enemys.Length; i++)
         {
-            m_Enemys[i].GetComponent<AI>().SetBombList(aRow, aCol, false);
+            if (m_Enemys[i] != null)
+            {
+                m_Enemys[i].GetComponent<AI>().SetBombList(aRow, aCol, false);
+            }
         }
     }
 }

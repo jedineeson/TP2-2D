@@ -9,7 +9,7 @@ public class PlayerData : ScriptableObject
     [SerializeField] private float m_Speed;
     [SerializeField] private string m_Id;
 
-    public float HP { get { return m_HP; } }
+    public int HP { get { return m_HP; } }
     public float Speed { get { return m_Speed; } }
     public string Id { get { return m_Id; } }
 }

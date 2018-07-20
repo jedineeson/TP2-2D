@@ -5,7 +5,7 @@ using UnityEngine;
 public class AI : MonoBehaviour
 {
     public PlayerData m_Data;
-    public float m_HP;
+    public int m_HP;
     private float m_Speed;
     private List<List<bool>> m_BombList = new List<List<bool>>();
     private bool m_CanDropBomb = true;
@@ -70,7 +70,7 @@ public class AI : MonoBehaviour
 
     private void Update()
     {
-        if(m_HP <= 0)
+        if (m_HP <= 0)
         {
             Destroy(gameObject);
         }
@@ -150,16 +150,16 @@ public class AI : MonoBehaviour
                 }
                 break;
             case 3:
-                    m_Visual.flipX = true;
-                    m_PlayerAnimator.SetBool("WalkRight", true);
-                    m_PlayerAnimator.SetBool("WalkDown", false);
-                    m_PlayerAnimator.SetBool("WalkUp", false);
-                    m_IsMoving = true;
-                    m_PercentageCompletion = 0f;
-                    m_InitialPos = transform.position;
-                    m_WantedPos = LevelGenerator.Instance.GetPositionAt(m_CurrentRow, m_CurrentCol - 1);
-                    m_DestinationCol = m_CurrentCol - 1;
-                    m_DestinationRow = m_CurrentRow;
+                m_Visual.flipX = true;
+                m_PlayerAnimator.SetBool("WalkRight", true);
+                m_PlayerAnimator.SetBool("WalkDown", false);
+                m_PlayerAnimator.SetBool("WalkUp", false);
+                m_IsMoving = true;
+                m_PercentageCompletion = 0f;
+                m_InitialPos = transform.position;
+                m_WantedPos = LevelGenerator.Instance.GetPositionAt(m_CurrentRow, m_CurrentCol - 1);
+                m_DestinationCol = m_CurrentCol - 1;
+                m_DestinationRow = m_CurrentRow;
                 break;
             case 4:
                 m_PlayerAnimator.SetBool("WalkDown", false);
@@ -169,16 +169,16 @@ public class AI : MonoBehaviour
                 m_PercentageCompletion = 0f;
                 m_InitialPos = transform.position;
                 m_WantedPos = LevelGenerator.Instance.GetPositionAt(m_CurrentRow, m_CurrentCol);
-                if(m_CanDropBomb)
-                {      
+                if (m_CanDropBomb)
+                {
                     m_BombPos = LevelGenerator.Instance.GetPositionAt(m_CurrentRow, m_CurrentCol);
                     SetBombList(m_CurrentRow, m_CurrentCol, true);
                     StartCoroutine(SetBoolFalse(m_CurrentRow, m_CurrentCol));
                     GameObject bombe = GameObject.Instantiate(m_BombPrefab, m_BombPos, m_BombPrefab.transform.rotation);
                     Bomb bomba = bombe.GetComponent<Bomb>();
-                    bomba.Setup(m_CurrentRow, m_CurrentCol);                               
+                    bomba.Setup(m_CurrentRow, m_CurrentCol);
                     m_CanDropBomb = false;
-                    StartCoroutine(CanDropBomb());                
+                    StartCoroutine(CanDropBomb());
                 }
                 break;
             case 5:
@@ -364,7 +364,7 @@ public class AI : MonoBehaviour
                        LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow + 1, m_CurrentCol) == ETileType.Wall &&
                         LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow, m_CurrentCol - 1) == ETileType.Destructible)
             {
-                if ((m_CurrentCol < 14 && m_BombList[m_CurrentRow][m_CurrentCol+1] == true) && m_BombList[m_CurrentRow][m_CurrentCol] != true)
+                if ((m_CurrentCol < 14 && m_BombList[m_CurrentRow][m_CurrentCol + 1] == true) && m_BombList[m_CurrentRow][m_CurrentCol] != true)
                 {
                     m_MyState = 5;
                 }
@@ -374,7 +374,7 @@ public class AI : MonoBehaviour
                     {
                         m_MyState = Random.Range(0, 5);
                     }
-                while (m_MyState == 0 || m_MyState == 2 || m_MyState == 3 || m_MyState == 4 || m_MyState == 5);
+                    while (m_MyState == 0 || m_MyState == 2 || m_MyState == 3 || m_MyState == 4 || m_MyState == 5);
                 }
             }
             else if (LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow - 1, m_CurrentCol) == ETileType.Floor &&
@@ -496,7 +496,7 @@ public class AI : MonoBehaviour
             {
                 do
                 {
-                    m_MyState = Random.Range(0,5);
+                    m_MyState = Random.Range(0, 5);
                 }
                 while (m_MyState == 1 || m_MyState == 2 || m_MyState == 3 || m_MyState == 4);
             }
@@ -528,8 +528,8 @@ public class AI : MonoBehaviour
                         LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow, m_CurrentCol - 1) == ETileType.Floor)
             {
                 if ((m_CurrentCol > 0 && m_BombList[m_CurrentRow][m_CurrentCol - 1] == true) ||
-                     (m_CurrentCol > 1 && m_BombList[m_CurrentRow][m_CurrentCol-2] == true) ||
-                      (m_CurrentCol > 2 && m_BombList[m_CurrentRow][m_CurrentCol-3] == true))
+                     (m_CurrentCol > 1 && m_BombList[m_CurrentRow][m_CurrentCol - 2] == true) ||
+                      (m_CurrentCol > 2 && m_BombList[m_CurrentRow][m_CurrentCol - 3] == true))
                 {
                     do
                     {
@@ -564,7 +564,7 @@ public class AI : MonoBehaviour
                        LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow + 1, m_CurrentCol) == ETileType.Wall &&
                         LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow, m_CurrentCol - 1) == ETileType.Floor)
             {
-                if ((m_CurrentCol > 0 && m_BombList[m_CurrentRow][m_CurrentCol - 1] == true) && m_BombList[m_CurrentRow][m_CurrentCol] != true)                     
+                if ((m_CurrentCol > 0 && m_BombList[m_CurrentRow][m_CurrentCol - 1] == true) && m_BombList[m_CurrentRow][m_CurrentCol] != true)
                 {
                     do
                     {
@@ -572,7 +572,7 @@ public class AI : MonoBehaviour
                     }
                     while (m_MyState == 0 || m_MyState == 1 || m_MyState == 2 || m_MyState == 4);
                 }
-                else 
+                else
                 {
                     do
                     {
@@ -608,7 +608,7 @@ public class AI : MonoBehaviour
                        LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow + 1, m_CurrentCol) == ETileType.Destructible &&
                         LevelGenerator.Instance.GetTileTypeAtPos(m_CurrentRow, m_CurrentCol - 1) == ETileType.Wall)
             {
-                if ((m_CurrentRow > 0 && m_BombList[m_CurrentRow-1][m_CurrentCol] == true) && m_BombList[m_CurrentRow][m_CurrentCol] != true)
+                if ((m_CurrentRow > 0 && m_BombList[m_CurrentRow - 1][m_CurrentCol] == true) && m_BombList[m_CurrentRow][m_CurrentCol] != true)
                 {
                     do
                     {
@@ -646,8 +646,8 @@ public class AI : MonoBehaviour
                     }
                     while (m_MyState == 0 || m_MyState == 1 || m_MyState == 3);
                 }
-                }
             }
+        }
         #endregion
         #region Aucun Danger!
         else
